@@ -27,7 +27,7 @@ module.exports = {
     },
     findByListId: function findListsByUser(_id: String){
         return new Promise((resolve, reject) => {
-            List.find({ _id }).then((data: Document[]) => resolve(data));
+            List.findOne({ _id: _id }).then((data: Document[]) => resolve(data));
         })
     },
     create: function createList(user: String, name: String){
@@ -36,7 +36,11 @@ module.exports = {
             newList.save().then((data: Document[]) => resolve(data));
         });
     },
-    updateByListId: function updateListByListId(id: String){
-
+    updateByListId: function updateListByListId(_id: String, list: any){
+        return new Promise((resolve, reject) => {
+            List.updateOne({_id}, list)
+                .then((data:any) => resolve(data))
+                .catch((err: Error) => reject(err));
+        })
     }
 }

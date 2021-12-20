@@ -1,4 +1,7 @@
+// Libraries / Modules
 import express from "express";
-const app = express();
+const router = require('./routers');
 
+const app = express();
+app.use('/api', router);
 module.exports = app;

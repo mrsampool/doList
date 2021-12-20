@@ -10,11 +10,19 @@ I am also using this concept as an opportunity to grow my familiarity with TypeS
 
 ## Primary Tech
 
-The primary tech for DoList will be the following
+DoList uses the **MERN-stack** with TypeScript.
 
-- NodeJS + Express + Typescript - 
-  - Web server
-- ReactJS + Typescript
-  - Client app
-- MongoDB
-  - Database
+More specifically, here is the primary tech for each layer:
+
+### Web server
+![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![ExpressJS](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+
+### Client app
+![ReactJS](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+
+
+### Data Persistence
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)

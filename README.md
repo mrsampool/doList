@@ -4,7 +4,9 @@ Greetings from Sam Pool, developer of DoList. DoList is a simple full-stack web 
 
 ## Background
 
-I wanted to make this app for my own use. I use Apple notes to keep track of my grocery / shopping lists, but wanted to be able to keep different to-do items stored in collapsible categories, and easily see which items are checked in each category without having to scroll the entire list (My current grocery list has 100+ items). 
+I wanted to make this app for my own use. I use Apple notes to keep track of my grocery / shopping lists, but wanted to be able to keep different to-do items stored in collapsible categories, and easily see which items are checked in each category without having to scroll the entire list (My current grocery list has 100+ items).
+
+I am also using this concept as an opportunity to grow my familiarity with TypeScript and MongoDB. 
 
 ## Primary Tech
 

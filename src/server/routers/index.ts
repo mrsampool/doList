@@ -1,2 +1,7 @@
 import {Router} from 'express';
-const router = Router();
+const apiRouter = Router();
+const userRouter = require('./user');
+
+apiRouter.use('/user', userRouter);
+
+module.exports = apiRouter;

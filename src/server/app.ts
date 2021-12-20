@@ -1,7 +1,7 @@
 // Libraries / Modules
-import express from "express";
+import * as express from "express";
 const router = require('./routers');
 
 const app = express();
-app.use('/api', router);
+// app.use('/api', router);
 module.exports = app;

@@ -4,12 +4,17 @@
   "description": "A simple app for organizing to-do lists",
   "main": "index.js",
   "scripts": {
-    "start": "node server",
+    "start": "node dist/server",
+    "build": "rm -r dist || true && tsc --outDir ./dist",
+    "dev-build": "rm -r dist || true && tsc --outDir ./dist -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sam Pool",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.1"
   }
 }

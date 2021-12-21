@@ -1,18 +1,20 @@
+// Libraries
 import {useEffect, useState} from "react";
-import axios from "axios";
-import {List} from "../lib/classes/List";
+
+// Components
 import ListGroup from "./components/ListGroup/ListGroup";
+
+// Utils
+const serverUtils = require('./serverUtils');
+import {List} from "../lib/classes/List";
 import {GroupInterface} from "../lib/interfaces/GroupInterface";
 
 const App = () => {
     const [lists, setList] = useState([]);
     const [currentList, setCurrentList] = useState(new List());
+    const [user, setUser] = useState({ id: 'sambpool@gmail.com' });
     useEffect(()=>{
-        axios.get('/api/user/sambpool@gmail.com/list/')
-            .then(({data}) =>{
-                setList(data);
-                setCurrentList(data[0]);
-            })
+        serverUtils.fetchLists(user.id, setList, setCurrentList);
     }, [])
     return (
         <ul>

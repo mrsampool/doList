@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import {Item} from "../db/schemas/item";
-import {List} from "../db/schemas/list";
+import {ListInterface} from "../db/schemas/list";
 const model = require('../models/');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
         const {name} = req.body;
         if (name) {
             model.item.add(groupId, { name, status: false })
-                .then((editedList:List) => {
+                .then((editedList:ListInterface) => {
                     const addedItem: Item | undefined = editedList
                         .groups.find((group) => group._id.toString() === groupId)
                         ?.items.find((item) => item.name === name);

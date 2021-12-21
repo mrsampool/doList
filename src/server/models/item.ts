@@ -1,5 +1,5 @@
 import {Item} from "../db/schemas/item";
-import {List} from "../db/schemas/list";
+import {ListInterface} from "../db/schemas/list";
 
 export {};
 const { ListModel } = require('./list');
@@ -12,7 +12,7 @@ module.exports = {
                 { $push: { "groups.$.items": newItem } },
                 { new: true }
             )
-                .then((data: List) => resolve(data))
+                .then((data: ListInterface) => resolve(data))
                 .catch((err: Error) => console.log(err));
         });
     },
@@ -23,7 +23,7 @@ module.exports = {
                 { "groups.$[group].items.$[item].name": newName },
                 { arrayFilters: [{ "group._id": groupId }, { "item._id": itemId }] },
             )
-                .then((data: List) => resolve(data))
+                .then((data: ListInterface) => resolve(data))
                 .catch((err: Error) => console.log(err));
         })
     },
@@ -34,7 +34,7 @@ module.exports = {
                 { "groups.$[group].items.$[item].status": status },
                 { arrayFilters: [{ "group._id": groupId }, { "item._id": itemId }] },
             )
-                .then((data: List) => resolve(data))
+                .then((data: ListInterface) => resolve(data))
                 .catch((err: Error) => console.log(err));
         })
     }

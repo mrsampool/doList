@@ -7,7 +7,7 @@ export const groupSchema = mongoose.Schema({
     items: [itemSchema]
 });
 
-export interface Group {
+export interface GroupInterface {
     _id: ObjectId
     name: string,
     items: Item[]

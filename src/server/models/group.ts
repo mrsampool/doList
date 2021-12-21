@@ -1,4 +1,4 @@
-import {List} from "../db/schemas/list";
+import {ListInterface} from "../db/schemas/list";
 
 export {};
 const { ListModel } = require('./list');
@@ -11,7 +11,7 @@ module.exports = {
                 { $push: { groups: { name: newGroupName, items: []}}},
                 { new: true }
             )
-                .then((data: List) => resolve(data))
+                .then((data: ListInterface) => resolve(data))
                 .catch((err: Error) => console.log(err));
         });
     },

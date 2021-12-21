@@ -1,6 +1,6 @@
 export {};
 const mongoose = require('../db');
-import {List, listSchema} from "../db/schemas/list";
+import {ListInterface, listSchema} from "../db/schemas/list";
 import {Document} from "mongoose";
 
 const ListModel = mongoose.model('List', listSchema);

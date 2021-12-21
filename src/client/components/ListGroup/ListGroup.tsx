@@ -1,27 +1,59 @@
-// React
-import React from 'react';
+import {ReactNode, useState} from "react";
 
 // Stylesheet
 import './ListGroup.css';
+
 import {GroupInterface} from "../../../lib/interfaces/GroupInterface";
 import {ItemInterface} from "../../../lib/interfaces/ItemInterface";
+import ListGroupItem from "../ListGroupItem/ListGroupItem";
 
 const ListGroup = ({ group }:ListGroupProps) => {
     const { name, items } = group;
+    const [dropDown, setDropDown] = useState(true);
+    function toggleDropdown(){
+        setDropDown(!dropDown);
+    }
     return (
         <li>
             {name}
+            <button type="button">+</button>
             <ul>
-                { items.map((item: ItemInterface) => {
-                    return <li key={`${name}Group-${item.name}Item`}>{item.name}</li>
+                { items
+                    .filter((item) => item.status)
+                    .map((item: ItemInterface) => {
+                    return(
+                        <ListGroupItem
+                            item={item}
+                            key={`${name}Group-${item.name}Item`}
+                        >{item.name}
+                        </ListGroupItem>
+                    )
                 })}
             </ul>
+            <button onClick={toggleDropdown}>{ dropDown ? '^' : 'v'}</button>
+            {
+                dropDown &&
+                <ul>
+                    { items
+                        .filter((item) => !item.status)
+                        .map((item: ItemInterface) => {
+                            return(
+                                <ListGroupItem
+                                    item={item}
+                                    key={`${name}Group-${item.name}Item`}
+                                >{item.name}
+                                </ListGroupItem>
+                            )
+                        })}
+                </ul>
+            }
+
         </li>
     );
 };
 export default ListGroup;
 
 interface ListGroupProps {
-    children: React.ReactNode
+    children: ReactNode
     group: GroupInterface
 }

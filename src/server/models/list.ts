@@ -1,22 +1,7 @@
 export {};
 const mongoose = require('../db');
+import {listSchema} from "../db/schemas/list";
 import {Document} from "mongoose";
-
-const listSchema = mongoose.Schema({
-    user: String,
-    name: String,
-    groups: [
-        {
-            name: String,
-            items: [
-                {
-                    name: String,
-                    status: Boolean
-                }
-            ]
-        }
-        ]
-});
 
 const List = mongoose.model('List', listSchema);
 

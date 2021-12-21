@@ -1,4 +1,4 @@
-const mongoose = require('./');
+const mongoose = require('../');
 import {Group} from "./group";
 import {groupSchema} from "./group";
 
@@ -7,11 +7,6 @@ export const listSchema = mongoose.Schema({
     name: String,
     groups: [groupSchema]
 });
-
-export interface Item {
-    name: string,
-    status: boolean
-}
 
 export interface List {
     user: string,

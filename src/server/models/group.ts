@@ -1,14 +1,17 @@
+import {List} from "../db/schemas/list";
+
 export {};
-const { List } = require('./list');
+const { ListModel } = require('./list');
 
 module.exports = {
     add: function addGroupToListId(_id: String, newGroupName: String){
-        return new Promise((resolve, reject) => {
-            List.updateOne(
+        return new Promise((resolve) => {
+            ListModel.findOneAndUpdate(
                 { _id },
-                { $push: { groups: { name: newGroupName, items: []}}}
+                { $push: { groups: { name: newGroupName, items: []}}},
+                { new: true }
             )
-                .then((data: any) => resolve(data))
+                .then((data: List) => resolve(data))
                 .catch((err: Error) => console.log(err));
         });
     },

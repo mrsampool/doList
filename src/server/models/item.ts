@@ -1,26 +1,41 @@
+import {Item} from "../db/schemas/item";
+import {List} from "../db/schemas/list";
+
 export {};
-const { List } = require('./list');
+const { ListModel } = require('./list');
 
 module.exports = {
-    add: function addGroupItem(_id: String, groupId: String, newItem: any){
-        return new Promise((resolve, reject) => {
-            List.updateOne(
+    add: function addGroupItem(groupId: String, newItem: Item){
+        return new Promise((resolve) => {
+            ListModel.findOneAndUpdate(
                 { groups: { $elemMatch: { _id: groupId } } },
-                { $push: { "groups.$.items": newItem } }
+                { $push: { "groups.$.items": newItem } },
+                { new: true }
             )
-                .then((data: any) => resolve(data))
+                .then((data: List) => resolve(data))
                 .catch((err: Error) => console.log(err));
         });
     },
-    setStatus: function setItemStatus(listId: String, groupId: String, itemId: String, status: Boolean) {
-        return new Promise((resolve, reject) => {
-            List.findOneAndUpdate(
+    rename: function setItemStatus(groupId: String, itemId: String, newName: String) {
+        return new Promise((resolve) => {
+            ListModel.findOneAndUpdate(
+                { groups: { $elemMatch: { _id: groupId, items: { $elemMatch: { _id: itemId }}}}},
+                { "groups.$[group].items.$[item].name": newName },
+                { arrayFilters: [{ "group._id": groupId }, { "item._id": itemId }] },
+            )
+                .then((data: List) => resolve(data))
+                .catch((err: Error) => console.log(err));
+        })
+    },
+    setStatus: function setItemStatus(groupId: String, itemId: String, status: Boolean) {
+        return new Promise((resolve) => {
+            ListModel.findOneAndUpdate(
                 { groups: { $elemMatch: { _id: groupId, items: { $elemMatch: { _id: itemId }}}}},
                 { "groups.$[group].items.$[item].status": status },
-                { arrayFilters: [{ "group._id": groupId }, { "item._id": itemId }]}
+                { arrayFilters: [{ "group._id": groupId }, { "item._id": itemId }] },
             )
-                .then((data: any) => resolve(data))
-                .catch((err: any) => console.log(err));
+                .then((data: List) => resolve(data))
+                .catch((err: Error) => console.log(err));
         })
     }
 };

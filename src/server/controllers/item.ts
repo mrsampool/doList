@@ -1,26 +1,37 @@
 import {Request, Response} from "express";
+import {Item} from "../db/schemas/item";
+import {List} from "../db/schemas/list";
 const model = require('../models/');
 
 module.exports = {
     add: function addGroupToList(req: Request, res: Response){
-        const {listId, groupId} = req.params;
+        const {groupId} = req.params;
         const {name} = req.body;
-        model.item.add(
-            listId,
-            groupId,
-            {
-                name,
-                status: false
-            }
-        )
-            .then((data:any) => res.send(data))
-            .catch((err: Error) => console.log(err));
+        if (name) {
+            model.item.add(groupId, { name, status: false })
+                .then((editedList:List) => {
+                    const addedItem: Item | undefined = editedList
+                        .groups.find((group) => group._id.toString() === groupId)
+                        ?.items.find((item) => item.name === name);
+                    addedItem
+                        ?  res.status(201).send(addedItem)
+                        :  res.status(500).send('Insertion error');
+                })
+                .catch((err: Error) => console.log(err));
+        } else { res.sendStatus(400) }
+    },
+    rename: function renameGroupItem(req: Request, res: Response){
+        const { groupId, itemId } = req.params;
+        const { name } = req.body;
+        model.item.rename(groupId, itemId, name)
+            .then(() => res.sendStatus(200))
+            .catch((err: Error) => { console.log(err); res.status(500).send(err)})
     },
     setStatus: function setItemStatus(req: Request, res: Response) {
-        const { listId, groupId, itemId } = req.params;
+        const { groupId, itemId } = req.params;
         const { status } = req.body;
-        model.item.setStatus(listId, groupId, itemId, status)
-            .then((data:any) => res.send(data))
+        model.item.setStatus(groupId, itemId, status)
+            .then(() => res.sendStatus(200))
             .catch((err: Error) => console.log(err))
     }
 };

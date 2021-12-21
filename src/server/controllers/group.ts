@@ -1,4 +1,5 @@
 import {Request, Response} from "express";
+import {List} from "../db/schemas/list";
 const model = require('../models');
 
 module.exports = {
@@ -6,7 +7,7 @@ module.exports = {
         const {listId} = req.params;
         const {name} = req.body;
         model.group.add(listId, name)
-            .then((data:any) => res.send(data))
+            .then((data:List) => res.send(data))
             .catch((err: Error) => console.log(err));
     }
 };

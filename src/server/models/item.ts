@@ -1,11 +1,11 @@
-import {Item} from "../db/schemas/item";
-import {ListInterface} from "../db/schemas/list";
+import {ListInterface} from "../../lib/interfaces/ListInterface";
+import {ItemInterface} from "../../lib/interfaces/ItemInterface";
 
 export {};
 const { ListModel } = require('./list');
 
 module.exports = {
-    add: function addGroupItem(groupId: String, newItem: Item){
+    add: function addGroupItem(groupId: String, newItem: ItemInterface){
         return new Promise((resolve) => {
             ListModel.findOneAndUpdate(
                 { groups: { $elemMatch: { _id: groupId } } },

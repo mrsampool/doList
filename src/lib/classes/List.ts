@@ -1,4 +1,4 @@
-import {GroupInterface} from "../server/db/schemas/group";
+import {GroupInterface} from "../interfaces/GroupInterface";
 
 export class List {
   name: String;

@@ -5,7 +5,3 @@ export const itemSchema = mongoose.Schema({
     status: Boolean
 });
 
-export interface Item {
-    name: string,
-    status: boolean
-}

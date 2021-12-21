@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
-import {Item} from "../db/schemas/item";
-import {ListInterface} from "../db/schemas/list";
+import {ListInterface} from "../../lib/interfaces/ListInterface";
+import {ItemInterface} from "../../lib/interfaces/ItemInterface";
 const model = require('../models/');
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
         if (name) {
             model.item.add(groupId, { name, status: false })
                 .then((editedList:ListInterface) => {
-                    const addedItem: Item | undefined = editedList
+                    const addedItem: ItemInterface | undefined = editedList
                         .groups.find((group) => group._id.toString() === groupId)
                         ?.items.find((item) => item.name === name);
                     addedItem

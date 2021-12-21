@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {ListInterface} from "../db/schemas/list";
+import {ListInterface} from "../../lib/interfaces/ListInterface";
 const model = require('../models');
 
 module.exports = {

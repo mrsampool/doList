@@ -1,5 +1,4 @@
 const mongoose = require('../');
-import {GroupInterface} from "./group";
 import {groupSchema} from "./group";
 
 export const listSchema = mongoose.Schema({
@@ -8,8 +7,3 @@ export const listSchema = mongoose.Schema({
     groups: [groupSchema]
 });
 
-export interface ListInterface {
-    user: string,
-    name: string,
-    groups: GroupInterface[]
-}

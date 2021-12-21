@@ -1,6 +1,8 @@
+import {ListInterface} from "../../lib/interfaces/ListInterface";
+
 export {};
 const mongoose = require('../db');
-import {ListInterface, listSchema} from "../db/schemas/list";
+import {listSchema} from "../db/schemas/list";
 import {Document} from "mongoose";
 
 const ListModel = mongoose.model('List', listSchema);

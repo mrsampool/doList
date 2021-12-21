@@ -1,4 +1,4 @@
-import {ListInterface} from "../db/schemas/list";
+import {ListInterface} from "../../lib/interfaces/ListInterface";
 
 export {};
 const { ListModel } = require('./list');

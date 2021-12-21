@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import {GroupInterface} from "../server/db/schemas/group";
+import {List} from "../lib/List";
 
 const App = () => {
     const [lists, setList] = useState([]);
@@ -16,7 +16,7 @@ const App = () => {
         <ul>
             {
                 currentList.groups.length && currentList.groups[0].name
-                && currentList.groups.map((item) => <li>{item.name}</li>)
+                && currentList.groups.map((item) => <li key={`listGroup${item._id}`}>{item.name}</li>)
             }
         </ul>
     )
@@ -25,23 +25,3 @@ const App = () => {
 
 export default App;
 
-class List{
-    name: String;
-    groups: GroupInterface[]|[];
-    constructor(name?:String) {
-        this.name = name || '';
-        this.groups = []
-    }
-}
-/*
-class Group{
-    _id: ObjectId
-    name: String
-    items: []
-    constructor(name?: String) {
-        this._id = new ObjectId();
-        this.name = name || '';
-        this.items = [];
-    }
-}
- */

@@ -1,29 +1,30 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
-const CompressionPlugin = require('compression-webpack-plugin');
+//const CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = (env) => ({
-
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
-
+  devtool: "inline-source-map",
   mode: 'development',
   plugins: [
     new webpack.DefinePlugin({
       'process.env.API_URL': JSON.stringify(env.API_URL),
     }),
-    new MiniCssExtractPlugin({ filename: 'bundle.css' }),
-    new CompressionPlugin(),
+  //  new MiniCssExtractPlugin({ filename: 'bundle.css' }),
+  //  new CompressionPlugin(),
   ],
-  entry: path.resolve(__dirname, 'client', 'src', 'index.jsx'),
+  entry: path.resolve(__dirname, 'src', 'client', 'index.tsx'),
   output: {
-    path: path.resolve(__dirname, 'client', 'dist'),
+    path: path.resolve(__dirname, 'build', 'client'),
     filename: 'bundle.js',
   },
   module: {
     rules: [
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader"
+      },
+      /*
       {
         test: /\.(js|jsx)?$/,
         include: path.resolve(__dirname, 'client', 'src'),
@@ -37,6 +38,7 @@ module.exports = (env) => ({
           },
         ],
       },
+      /*
       {
         test: /\.css$/i,
         include: path.resolve(__dirname, 'client', 'src'),
@@ -46,6 +48,10 @@ module.exports = (env) => ({
           { loader: 'css-loader' },
         ],
       },
+       */
     ],
   },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"]
+  }
 });

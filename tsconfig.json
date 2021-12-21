@@ -1,8 +1,27 @@
 {
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "build"
+    "rootDir": "src",
+    "outDir": "build",
+
+    // Allow importing like `import React from 'react'`
+    "allowSyntheticDefaultImports": true,
+
+    // Use ES2015 module system
+    //"module": "es2015",
+
+    "moduleResolution": "node",
+
+    "target": "es6",
+
+    // Set React as the JSX factory
+    "jsx": "react-jsx",
+
+    // Include typings from built-in lib declarations
+    "lib": ["es2015", "dom", "dom.iterable"],
+
+    // Include module source maps for debugging
+    "sourceMap": true
   },
   "include": [
     "src/**/*.ts",

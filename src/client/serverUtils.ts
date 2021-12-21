@@ -1,11 +1,12 @@
 import axios from "axios";
-import {setStateAction} from 'react';
+import React from 'react';
+import {ListInterface} from "../../build/lib/ListInterface";
 
 module.exports = {
     fetchLists: function fetchListsByUser(
         userId: String,
-        setList: setStateAction,
-        setCurrentList: setStateAction
+        setList: React.Dispatch<React.SetStateAction<ListInterface[]>>,
+        setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
     ){
         axios.get('/api/user/sambpool@gmail.com/list/')
             .then(({data}) =>{

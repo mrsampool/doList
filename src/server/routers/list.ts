@@ -10,7 +10,7 @@ process.env.NODE_ENV !== 'production' && listRouter.use((req: Request, res: Resp
 });
 
 listRouter.get('/', controller.list.getByUser);
-listRouter.post('/', controller.list.addList);
+listRouter.post('/', controller.list.post);
 listRouter.use('/:listId/group', groupRouter);
 
 // TODO: listRouter.get('/:listId')

@@ -1,4 +1,5 @@
 module.exports = {
     list: require('./list'),
-    group: require('./group')
+    group: require('./group'),
+    item: require('./item')
 };

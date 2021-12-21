@@ -9,5 +9,4 @@ process.env.NODE_ENV !== 'production' && apiRouter.use((req: Request, res: Respo
 });
 
 apiRouter.use('/user', userRouter);
-
 module.exports = apiRouter;

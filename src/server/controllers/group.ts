@@ -7,7 +7,9 @@ module.exports = {
         const {listId} = req.params;
         const {name} = req.body;
         model.group.add(listId, name)
-            .then((data:ListInterface) => res.send(data))
+            .then((data:ListInterface) => {
+                res.send(data.groups[data.groups.length - 1])
+            })
             .catch((err: Error) => console.log(err));
     }
 };

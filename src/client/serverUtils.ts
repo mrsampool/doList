@@ -3,11 +3,11 @@ import {ListInterface} from '../lib/interfaces/ListInterface';
 
 module.exports = {
     fetchLists: function fetchListsByUser(
-        userId: String,
+        username: String,
         setUserLists: React.Dispatch<React.SetStateAction<ListInterface[]>>,
         setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
     ){
-        axios.get(`/api/user/${userId}/list/`)
+        axios.get(`/api/user/${username}/list/`)
             .then(({data}) =>{
                 setUserLists(data);
                 setCurrentList(data[0]);
@@ -15,11 +15,11 @@ module.exports = {
     },
     postGroup: function postGroupToList(
         groupName: String,
-        userId: String,
+        username: String,
         currentList: ListInterface,
         setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
     ){
-        axios.post(`/api/user/${userId}/list/${currentList._id}/group/`,
+        axios.post(`/api/user/${username}/list/${currentList._id}/group/`,
             {name: groupName})
             .then(({data}) => {
                 const updatedList = Object.create(currentList);
@@ -29,13 +29,12 @@ module.exports = {
     },
     postItem: function postItemToGroup(
         itemName: String,
-        userId: String,
+        username: String,
         listId: String,
         groupId: String,
-        currentList: ListInterface,
         setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
     ){
-        axios.post(`/api/user/${userId}/list/${listId}/group/${groupId}/item/`,
+        axios.post(`/api/user/${username}/list/${listId}/group/${groupId}/item/`,
             {name: itemName})
             .then(({data}) => {
                 setCurrentList(data);

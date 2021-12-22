@@ -9,14 +9,7 @@ module.exports = {
         const {name} = req.body;
         if (name) {
             model.item.add(groupId, { name, status: false })
-                .then((editedList:ListInterface) => {
-                    const addedItem: ItemInterface | undefined = editedList
-                        .groups.find((group) => group._id.toString() === groupId)
-                        ?.items.find((item) => item.name === name);
-                    addedItem
-                        ?  res.status(201).send(addedItem)
-                        :  res.status(500).send('Insertion error');
-                })
+                .then((editedList:ListInterface) => res.send(editedList))
                 .catch((err: Error) => console.log(err));
         } else { res.sendStatus(400) }
     },

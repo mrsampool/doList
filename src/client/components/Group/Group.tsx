@@ -6,7 +6,7 @@ import GroupItem from "../GroupItem/GroupItem";
 // Utils
 import {GroupInterface} from "../../../lib/interfaces/GroupInterface";
 import {ItemInterface} from "../../../lib/interfaces/ItemInterface";
-const postItem = require('../../serverUtils');
+const {postItem} = require('../../serverUtils');
 import {AppContext} from "../../AppContext";
 
 // Stylesheet
@@ -14,16 +14,19 @@ import './Group.css';
 
 const Group = ({ group }:ListGroupProps) => {
     const { name, items } = group;
-    const { user, setCurrentList } = useContext(AppContext);
+    const { user, currentList, setCurrentList } = useContext(AppContext);
     const [dropDown, setDropDown] = useState(true);
     function toggleDropdown(){
         setDropDown(!dropDown);
     }
     function handleAddGroup(e: React.FormEvent){
         e.preventDefault();
-        const itemName = (e.target as HTMLInputElement)
-            .querySelector('input')?.value;
-        postItem(itemName, user.name, )
+        const itemNameInput = (e.target as HTMLInputElement).querySelector('input');
+        if (itemNameInput){
+            const itemName = itemNameInput.value;
+            postItem(itemName, user.name, currentList._id, group._id, setCurrentList );
+            if (itemNameInput){ itemNameInput.value = ''}
+        }
     }
     return (
         <li id="group">

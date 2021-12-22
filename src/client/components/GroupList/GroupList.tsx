@@ -9,7 +9,7 @@ import {GroupInterface} from '../../../lib/interfaces/GroupInterface';
 const GroupList = ({list}:GroupListProps) => {
     return (
         <ul id="group-list">
-            { list.length && list.map((group: GroupInterface) => {
+            { list && list.length && list.map((group: GroupInterface) => {
                 return (
                     <Group
                         key={group._id.toString()}

@@ -3,6 +3,6 @@ import {ItemInterface} from "./ItemInterface";
 
 export interface GroupInterface {
     _id: ObjectId
-    name: string,
+    name: String,
     items: ItemInterface[]
 }

@@ -1,23 +1,38 @@
-import {ReactNode, useState} from "react";
+import {ReactNode, useState, useContext} from "react";
+
+// Sub-components
+import GroupItem from "../GroupItem/GroupItem";
+
+// Utils
+import {GroupInterface} from "../../../lib/interfaces/GroupInterface";
+import {ItemInterface} from "../../../lib/interfaces/ItemInterface";
+const postItem = require('../../serverUtils');
+import {AppContext} from "../../AppContext";
 
 // Stylesheet
 import './Group.css';
 
-import {GroupInterface} from "../../../lib/interfaces/GroupInterface";
-import {ItemInterface} from "../../../lib/interfaces/ItemInterface";
-import GroupItem from "../GroupItem/GroupItem";
-
 const Group = ({ group }:ListGroupProps) => {
     const { name, items } = group;
+    const { user, setCurrentList } = useContext(AppContext);
     const [dropDown, setDropDown] = useState(true);
     function toggleDropdown(){
         setDropDown(!dropDown);
     }
+    function handleAddGroup(e: React.FormEvent){
+        e.preventDefault();
+        const itemName = (e.target as HTMLInputElement)
+            .querySelector('input')?.value;
+        postItem(itemName, user.name, )
+    }
     return (
         <li id="group">
             <div className="group-header">
-                <span className="group-name">{name}</span>
-                <button type="button">+</button>
+                <h2 className="group-name">{name}</h2>
+                <form onSubmit={(e) => handleAddGroup(e)}>
+                    <input id="input-new-item"/><button type="submit">+</button>
+                </form>
+
             </div>
 
             <ul>

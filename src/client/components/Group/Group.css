@@ -9,11 +9,9 @@
     /* Misc */
     list-style-type: none;
 }
-.group-header{
-    display: flex;
-    justify-content: space-between;
+.group-header form input{
+    width: 13rem;
 }
-
 .group-name{
     width: 100%;
 }

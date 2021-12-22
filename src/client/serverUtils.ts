@@ -28,6 +28,17 @@ module.exports = {
             })
     },
     postItem: function postItemToGroup(
-
-    ){}
+        itemName: String,
+        userId: String,
+        listId: String,
+        groupId: String,
+        currentList: ListInterface,
+        setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
+    ){
+        axios.post(`/api/user/${userId}/list/${listId}/group/${groupId}/item/`,
+            {name: itemName})
+            .then(({data}) => {
+                setCurrentList(data);
+            })
+    }
 }

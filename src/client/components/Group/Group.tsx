@@ -1,11 +1,11 @@
 import {ReactNode, useState} from "react";
 
 // Stylesheet
-import './ListGroup.css';
+import './Group.css';
 
 import {GroupInterface} from "../../../lib/interfaces/GroupInterface";
 import {ItemInterface} from "../../../lib/interfaces/ItemInterface";
-import ListGroupItem from "../ListGroupItem/ListGroupItem";
+import GroupItem from "../GroupItem/GroupItem";
 
 const Group = ({ group }:ListGroupProps) => {
     const { name, items } = group;
@@ -14,19 +14,22 @@ const Group = ({ group }:ListGroupProps) => {
         setDropDown(!dropDown);
     }
     return (
-        <li>
-            {name}
-            <button type="button">+</button>
+        <li id="group">
+            <div className="group-header">
+                <span className="group-name">{name}</span>
+                <button type="button">+</button>
+            </div>
+
             <ul>
                 { items
                     .filter((item) => item.status)
                     .map((item: ItemInterface) => {
                     return(
-                        <ListGroupItem
+                        <GroupItem
                             item={item}
                             key={`${name}Group-${item.name}Item`}
                         >{item.name}
-                        </ListGroupItem>
+                        </GroupItem>
                     )
                 })}
             </ul>
@@ -38,11 +41,11 @@ const Group = ({ group }:ListGroupProps) => {
                         .filter((item) => !item.status)
                         .map((item: ItemInterface) => {
                             return(
-                                <ListGroupItem
+                                <GroupItem
                                     item={item}
                                     key={`${name}Group-${item.name}Item`}
                                 >{item.name}
-                                </ListGroupItem>
+                                </GroupItem>
                             )
                         })}
                 </ul>

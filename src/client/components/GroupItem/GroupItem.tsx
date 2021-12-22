@@ -2,9 +2,9 @@ import {ReactNode}from "react";
 import {ItemInterface} from "../../../lib/interfaces/ItemInterface";
 
 // Stylesheet
-import './ListGroupItem.css';
+import './GroupItem.css';
 
-const ListGroupItem = ({item}:ListGroupItemProps) => (
+const GroupItem = ({item}:ListGroupItemProps) => (
     <li>
         <label>
             <input type="checkbox" defaultChecked={item.status}/>
@@ -13,7 +13,7 @@ const ListGroupItem = ({item}:ListGroupItemProps) => (
         </label>
     </li>
 );
-export default ListGroupItem;
+export default GroupItem;
 
 interface ListGroupItemProps {
     children: ReactNode

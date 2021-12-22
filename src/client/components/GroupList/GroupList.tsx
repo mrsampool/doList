@@ -3,12 +3,12 @@ import {ReactNode} from 'react';
 
 // Stylesheet
 import './GroupList.css';
-import Group from "../ListGroup/Group";
+import Group from "../Group/Group";
 import {GroupInterface} from '../../../lib/interfaces/GroupInterface';
 
 const GroupList = ({list}:GroupListProps) => {
     return (
-        <ul>
+        <ul id="group-list">
             { list.length && list.map((group: GroupInterface) => {
                 return (
                     <Group

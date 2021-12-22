@@ -1,0 +1,19 @@
+#group{
+    /* Sizing */
+    width: 15rem;
+    /* Spacing */
+    margin: 1rem;
+    padding: 1rem;
+    /* Background & Border */
+    border: 0.25rem solid black;
+    /* Misc */
+    list-style-type: none;
+}
+.group-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.group-name{
+    width: 100%;
+}

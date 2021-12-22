@@ -19,7 +19,6 @@ const App = () => {
             serverUtils.postGroup(
                 groupName,
                 user.id,
-                '61c358d4472d8823f281b46c',
                 currentList,
                 setCurrentList
             )

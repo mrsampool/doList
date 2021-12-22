@@ -3,8 +3,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 // Components
-import ListGroup from './ListGroup';
+import Group from './Group';
 
 it('should render without crashing', () => {
-  render(<ListGroup />);
+  render(<Group group{} />);
 });

@@ -7,7 +7,7 @@ import {GroupInterface} from "../../../lib/interfaces/GroupInterface";
 import {ItemInterface} from "../../../lib/interfaces/ItemInterface";
 import ListGroupItem from "../ListGroupItem/ListGroupItem";
 
-const ListGroup = ({ group }:ListGroupProps) => {
+const Group = ({ group }:ListGroupProps) => {
     const { name, items } = group;
     const [dropDown, setDropDown] = useState(true);
     function toggleDropdown(){
@@ -51,9 +51,9 @@ const ListGroup = ({ group }:ListGroupProps) => {
         </li>
     );
 };
-export default ListGroup;
+export default Group;
 
 interface ListGroupProps {
-    children: ReactNode
+    children?: ReactNode
     group: GroupInterface
 }

@@ -9,9 +9,15 @@
     /* Misc */
     list-style-type: none;
 }
+
 .group-header form input{
     width: 13rem;
 }
 .group-name{
     width: 100%;
+}
+#group ul{
+    margin-left: 1rem;
+    padding: 0;
+    list-style-type: none;
 }

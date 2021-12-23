@@ -1,5 +1,7 @@
 export interface UserInterface {
     _id?: String | undefined,
-    name?: String,
-    password?: String
+    email: String,
+    password?: String,
+    firstName: String,
+    lastName: String
 }

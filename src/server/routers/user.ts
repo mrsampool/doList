@@ -1,4 +1,5 @@
 import {NextFunction, Request, Response, Router} from "express";
+const controller = require('../controllers');
 const listRouter = require('./list');
 const userRouter = Router();
 
@@ -8,7 +9,7 @@ process.env.NODE_ENV !== 'production' && userRouter.use((req: Request, res: Resp
     next();
 });
 
-// TODO: userRouter.post('/');
+userRouter.post('/', controller.user.create);
 // TODO: userRouter.get('/:userId');
 userRouter.use('/:user/list', listRouter);
 

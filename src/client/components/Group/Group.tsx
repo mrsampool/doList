@@ -6,8 +6,8 @@ import GroupItem from "../GroupItem/GroupItem";
 // Utils
 import {GroupInterface} from "../../../lib/interfaces/GroupInterface";
 import {ItemInterface} from "../../../lib/interfaces/ItemInterface";
-const {postItem} = require('../../serverUtils');
-import {AppContext} from "../../AppContext";
+const {postItem} = require('../../utils/serverUtils');
+import {AppContext} from "../../utils/AppContext";
 
 // Stylesheet
 import './Group.css';
@@ -30,14 +30,7 @@ const Group = ({ group }:ListGroupProps) => {
     }
     return (
         <li id="group">
-            <div className="group-header">
-                <h2 className="group-name">{name}</h2>
-                <form onSubmit={(e) => handleAddGroup(e)}>
-                    <input id="input-new-item"/><button type="submit">+</button>
-                </form>
-
-            </div>
-
+            <input defaultValue={`${name}`} className="group-name"/>
             <ul>
                 { items
                     .filter((item) => item.status)
@@ -45,13 +38,14 @@ const Group = ({ group }:ListGroupProps) => {
                     return(
                         <GroupItem
                             item={item}
+                            groupId={group._id.toString()}
                             key={`${name}Group-${item.name}Item`}
                         >{item.name}
                         </GroupItem>
                     )
                 })}
             </ul>
-            <button onClick={toggleDropdown}>{ dropDown ? '^' : 'v'}</button>
+            <button onClick={toggleDropdown}>{ dropDown ? 'collapse' : 'show all'}</button>
             {
                 dropDown &&
                 <ul>
@@ -61,14 +55,19 @@ const Group = ({ group }:ListGroupProps) => {
                             return(
                                 <GroupItem
                                     item={item}
+                                    groupId={group._id.toString()}
                                     key={`${name}Group-${item.name}Item`}
                                 >{item.name}
                                 </GroupItem>
                             )
-                        })}
+                        })
+                    }
+                    <form id="form-new-item" onSubmit={(e) => handleAddGroup(e)}>
+                    <input placeholder="add new item..." id="input-new-item"/>
+                    <button type="submit">+</button>
+                    </form>
                 </ul>
             }
-
         </li>
     );
 };

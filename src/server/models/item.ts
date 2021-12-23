@@ -32,7 +32,7 @@ module.exports = {
             ListModel.findOneAndUpdate(
                 { groups: { $elemMatch: { _id: groupId, items: { $elemMatch: { _id: itemId }}}}},
                 { "groups.$[group].items.$[item].status": status },
-                { arrayFilters: [{ "group._id": groupId }, { "item._id": itemId }] },
+                { arrayFilters: [{ "group._id": groupId }, { "item._id": itemId }], new: true },
             )
                 .then((data: ListInterface) => resolve(data))
                 .catch((err: Error) => console.log(err));

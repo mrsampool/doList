@@ -1,6 +1,5 @@
 import {Request, Response} from "express";
 import {ListInterface} from "../../lib/interfaces/ListInterface";
-import {ItemInterface} from "../../lib/interfaces/ItemInterface";
 const model = require('../models/');
 
 module.exports = {
@@ -24,7 +23,7 @@ module.exports = {
         const { groupId, itemId } = req.params;
         const { status } = req.body;
         model.item.setStatus(groupId, itemId, status)
-            .then(() => res.sendStatus(200))
+            .then((editedList:ListInterface) => res.send(editedList))
             .catch((err: Error) => console.log(err))
     }
 };

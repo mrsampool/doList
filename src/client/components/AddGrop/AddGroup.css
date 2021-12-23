@@ -1,0 +1,19 @@
+#add-group-form{
+    position: sticky;
+    bottom: 0;
+    padding: 1rem;
+    margin: 0.5rem;
+    background-color: var(--accent);
+    border: 0.25rem solid var(--yellow);
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+#add-group-button{
+    background-color: var(--yellow);
+    color: var(--accent);
+}
+#add-group-form input{
+    width: 100%;
+}

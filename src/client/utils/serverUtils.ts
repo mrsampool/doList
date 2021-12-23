@@ -22,13 +22,15 @@ module.exports = {
         currentList: ListInterface,
         setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
     ){
-        axios.post(`/api/user/${userId}/list/${currentList._id}/group/`,
-            {name: groupName})
-            .then(({data}) => {
-                const updatedList = Object.create(currentList);
-                updatedList.groups.push(data);
-                setCurrentList(updatedList);
-            })
+        return new Promise((resolve) => {
+            axios.post(`/api/user/${userId}/list/${currentList._id}/group/`,
+                {name: groupName})
+                .then(({data}) => {
+                    const updatedList = Object.create(currentList);
+                    updatedList.groups.push(data);
+                    setCurrentList(updatedList);
+                }).then(()=> resolve(null))
+        });
     },
     postItem: function postItemToGroup(
         itemName: String,

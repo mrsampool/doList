@@ -15,9 +15,9 @@ module.exports = {
             .then((data: Document) => res.send(data));
     },
     getCurrent: function getCurrentUser(req: AuthRequest, res: Response){
-        if (req.user) {
+        if (req.user && req.user._id) {
             console.log(req.user);
-            model.user.findById(req.user.email)
+            model.user.findById(req.user._id)
                 .then((dbUser: UserInterface) => {
                     let { _id, firstName, lastName, email } = dbUser;
                     res.json({ user: { _id, firstName, lastName, email} });

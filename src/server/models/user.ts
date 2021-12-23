@@ -25,7 +25,8 @@ module.exports = {
     findById: function findUserById(_id: String){
         return new Promise((resolve) => {
             UserModel.findOne({ _id })
-                .then((userData: UserInterface) => resolve(userData));
+                .then((userData: UserInterface) => resolve(userData))
+                .catch((err: Error) => console.log(err));
         })
     }
 

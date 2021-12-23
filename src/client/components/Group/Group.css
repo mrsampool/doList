@@ -1,6 +1,7 @@
 #group{
     /* Sizing */
-    width: 100%;
+    width: 25rem;
+    max-width: 100%;
     /* Spacing */
     margin: 0.5rem;
     padding: 0.5rem;

@@ -1,6 +1,6 @@
 import {createContext} from "react";
 import {ListInterface} from '../../lib/interfaces/ListInterface';
-import {UserInterface} from '../../lib/interfaces/User';
+import {UserInterface} from '../../lib/interfaces/UserInterface';
 import {List}  from '../../lib/classes/List';
 import {User}  from '../../lib/classes/User';
 

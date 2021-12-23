@@ -24,7 +24,7 @@ const Group = ({ group }:ListGroupProps) => {
         const itemNameInput = (e.target as HTMLInputElement).querySelector('input');
         if (itemNameInput){
             const itemName = itemNameInput.value;
-            postItem(itemName, user.name, currentList._id, group._id, setCurrentList );
+            postItem(itemName, user._id, currentList._id, group._id, setCurrentList );
             if (itemNameInput){ itemNameInput.value = ''}
         }
     }

@@ -19,14 +19,14 @@ const App = () => {
         if (groupName){
             serverUtils.postGroup(
                 groupName,
-                user.name,
+                user._id,
                 currentList,
                 setCurrentList
             )
         }
     }
     useEffect(()=>{
-        serverUtils.fetchLists(user.name, setUserLists, setCurrentList);
+        serverUtils.fetchLists(user._id, setUserLists, setCurrentList);
     }, [])
     return (
         <AppContext.Provider value={{ user, userLists, currentList, setCurrentList }}>

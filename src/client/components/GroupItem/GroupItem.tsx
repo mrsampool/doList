@@ -19,7 +19,7 @@ const GroupItem = ({item, groupId}:ListGroupItemProps) => {
     function handleToggleStatus(){
         setItemStatus(
             !item.status,
-            user.name,
+            user._id,
             currentList._id,
             groupId,
             item._id,

@@ -1,9 +1,21 @@
 export class User {
-    _id?: String | undefined;
-    name?: String;
+    _id?: string | undefined;
+    email: string;
+    password?: string;
+    firstName?: string;
+    lastName?: string;
 
-    constructor(name?: String, id?: String) {
-        this.name = name || ''
+    constructor(
+        email?: string,
+        password?: string,
+        firstName?: string,
+        lastName?: string,
+        id?: string
+        ) {
+        this.email = email || '';
+        this.firstName = firstName || '';
+        this.lastName = lastName || '';
+        this.password = password || '';
         if (id) {
             this._id = id;
         }

@@ -1,7 +1,7 @@
 export interface UserInterface {
-    _id?: String | undefined,
-    email: String,
-    password?: String,
-    firstName: String,
-    lastName: String
+    _id?: string | undefined,
+    email: string | undefined,
+    password?: string,
+    firstName?: string,
+    lastName?: string
 }

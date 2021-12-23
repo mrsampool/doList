@@ -13,8 +13,7 @@ module.exports = () => {
                 users.find(email)
                     .then((user: UserInterface) => {
                         if (!user) { return done(null, false); }
-                        bcrypt
-                            .compare(password, user.password)
+                        bcrypt.compare(password, user.password)
                             .then((result: boolean) => {
                                 if (result) { done(null, user);
                                 } else { done(null, false); }

@@ -18,7 +18,7 @@ module.exports = {
     },
     find: function findUserByName(name: String){
         return new Promise((resolve) => {
-            UserModel.find({ name }).then((userData: UserInterface) => resolve(userData));
+            UserModel.findOne({ name }).then((userData: UserInterface) => resolve(userData));
         })
     },
 

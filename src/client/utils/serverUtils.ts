@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ListInterface} from '../lib/interfaces/ListInterface';
+import {ListInterface} from '../../lib/interfaces/ListInterface';
 
 module.exports = {
     fetchLists: function fetchListsByUser(
@@ -39,5 +39,21 @@ module.exports = {
             .then(({data}) => {
                 setCurrentList(data);
             })
+    },
+    setItemStatus: function setItemStatus(
+        status: boolean,
+        username: String,
+        listId: String,
+        groupId: String,
+        itemId: String,
+        setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
+    ){
+        axios.put(`/api/user/${username}/list/${listId}/group/${groupId}/item/${itemId}`,
+            { status })
+            .then(({data}) => {
+                setCurrentList(data);
+            })
+
+
     }
 }

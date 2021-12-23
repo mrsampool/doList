@@ -5,10 +5,10 @@ import {useEffect, useState} from "react";
 import GroupList from "./components/GroupList/GroupList";
 
 // Utils
-const serverUtils = require('./serverUtils');
+const serverUtils = require('./utils/serverUtils');
 import {List} from "../lib/classes/List";
 import {User} from '../lib/classes/User';
-import {AppContext} from "./AppContext";
+import {AppContext} from "./utils/AppContext";
 
 const App = () => {
     const [userLists, setUserLists] = useState([]);

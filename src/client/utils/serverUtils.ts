@@ -2,6 +2,7 @@ import axios from "axios";
 import {ListInterface} from '../../lib/interfaces/ListInterface';
 import {CredsInterface} from '../../lib/interfaces/CredsInterface';
 import {UserInterface} from '../../lib/interfaces/UserInterface';
+import {User} from '../../lib/classes/User';
 
 module.exports = {
     fetchLists: function fetchListsByUser(
@@ -73,6 +74,16 @@ module.exports = {
                     errorCb()
                 }
             });
+    },
+    logout: function logOut(
+        setUser: React.Dispatch<React.SetStateAction<UserInterface>>
+    ) {
+        axios
+            .get(`/api/logout`)
+            .then(() => {
+                setUser(new User());
+            })
+            .catch((err) => console.log(err));
     },
     fetchUser(setUser: React.Dispatch<React.SetStateAction<UserInterface>>) {
         axios

@@ -43,7 +43,7 @@ const App = () => {
                 currentList
                 ? (
                     <Fragment>
-                        <Header />
+                        <Header logout={serverUtils.logout} setUser={setUser}/>
                         <GroupList list={currentList.groups} />
                         <input id="input-group-name"/>
                         <button onClick={handleAddGroup}>Add Group</button>

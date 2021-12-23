@@ -2,8 +2,8 @@ import {GroupInterface} from "./GroupInterface";
 import {ObjectId} from "mongoose";
 
 export interface ListInterface {
-    _id?: ObjectId | String | undefined,
-    user: String,
-    name: String,
+    _id?: ObjectId | string | undefined,
+    user: string,
+    name: string,
     groups: GroupInterface[]
 }

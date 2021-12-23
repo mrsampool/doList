@@ -4,3 +4,9 @@ html {
   --med--accent: #ff7f11;
   --light: lightblue;
 }
+.salmon-bg{
+  background-color: salmon;
+}
+.lightgray-bg{
+  background-color: lightgray;
+}

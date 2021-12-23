@@ -11,6 +11,7 @@ import {List} from "../lib/classes/List";
 import {User} from '../lib/classes/User';
 import {AppContext} from "./utils/AppContext";
 import {Auth} from "./components/Auth/Auth";
+import Header from "./components/Header/Header";
 
 const App = () => {
     const [userLists, setUserLists] = useState([]);
@@ -42,7 +43,7 @@ const App = () => {
                 currentList
                 ? (
                     <Fragment>
-                        <h1>{currentList.name}</h1>
+                        <Header />
                         <GroupList list={currentList.groups} />
                         <input id="input-group-name"/>
                         <button onClick={handleAddGroup}>Add Group</button>

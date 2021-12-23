@@ -8,6 +8,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 #Auth label {
     display: flex;
@@ -17,15 +18,23 @@
 }
 #Auth input {
     max-width: 20rem;
+    margin: 0 1rem;
+}
+#Auth h1{
+    background-color: var(--accent);
+    color: white;
+    border-radius: 1rem;
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
 }
 #Auth button {
     width: fit-content;
 }
 #Auth h2 {
+    color: var(--accent);
     font-weight: bold;
-}
-#Auth h2 {
-    color: lightgreen;
 }
 #Auth p {
     color: white;
@@ -37,14 +46,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: var(--accent);
+    width: 100%;
 }
 .login-rows label {
     margin: 0.25rem;
 }
 #other-options {
     margin-top: 1rem;
-    background-color: var(--dark);
-    border: 0.25rem solid var(--light);
+    border: 0.25rem solid var(--accent);
     border-radius: 1rem;
     padding: 1rem;
+}
+#other-options p{
+    color: var(--accent);
 }

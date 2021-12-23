@@ -75,7 +75,7 @@ export const Auth = ({ logIn, createAccount, setUser }:AuthProps) => {
     return (
         <div id="Auth">
             <form onSubmit={handleSubmit}>
-                <h1 id="logo">TimeTagger</h1>
+                <h1 id="logo">GroupList</h1>
                 <h2>{mode === "login" ? "User Log In" : "Create Account"}</h2>
                 {mode === "create" && (
                     <div className="login-rows">
@@ -110,14 +110,16 @@ export const Auth = ({ logIn, createAccount, setUser }:AuthProps) => {
                             </button>
                         )
                 }
-                <Warn message={warn} setMessage={setWarn} />
+                {
+                    warn && <Warn message={warn} setMessage={setWarn} />
+                }
             </form>
             <div id="other-options">
                 {
                     mode === 'login'
                         ? (
                             <Fragment>
-                                <p>New to TimeTagger?</p>
+                                <p>New to GroupList?</p>
                                 <button id="create" onClick={handleModeSwitch}>
                                     Create Account
                                 </button>
@@ -131,10 +133,15 @@ export const Auth = ({ logIn, createAccount, setUser }:AuthProps) => {
                             </Fragment>
                         )
                 }
-                <p>Or. . .</p>
-                <button id="create" onClick={handleDemo}>
-                    Try The Demo
-                </button>
+                {
+                    /*
+                    <p>Or. . .</p>
+                    <button id="create" onClick={handleDemo}>
+                        Try The Demo
+                    </button>
+                     */
+                }
+
             </div>
         </div>
     );

@@ -36,3 +36,6 @@
 #form-new-item input{
     padding-left: 1rem;
 }
+.icon.triangleDown.triangleUp{
+    transform: rotate(180deg);
+}

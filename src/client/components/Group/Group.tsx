@@ -11,6 +11,7 @@ import {AppContext} from "../../utils/AppContext";
 
 // Stylesheet
 import './Group.css';
+import {Icon} from "../icon/icon";
 
 const Group = ({ group }:ListGroupProps) => {
     const { name, items } = group;
@@ -45,7 +46,21 @@ const Group = ({ group }:ListGroupProps) => {
                     )
                 })}
             </ul>
-            <button onClick={toggleDropdown}>{ dropDown ? 'collapse' : 'show all'}</button>
+            <button
+                onClick={toggleDropdown}
+            >{ dropDown
+                ? (
+                    <Icon
+                        type="triangleDown"
+                        className="triangleUp"
+                    />
+                )
+                : (
+                    <Icon
+                        type="triangleDown"
+                    />
+                )
+            }</button>
             {
                 dropDown &&
                 <ul>
@@ -64,7 +79,9 @@ const Group = ({ group }:ListGroupProps) => {
                     }
                     <form id="form-new-item" onSubmit={(e) => handleAddGroup(e)}>
                     <input placeholder="add new item..." id="input-new-item"/>
-                    <button type="submit">+</button>
+                    <button type="submit">
+                      <Icon type="plus" />
+                    </button>
                     </form>
                 </ul>
             }

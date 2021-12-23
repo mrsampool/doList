@@ -1,8 +1,11 @@
 html {
-  --dark: #048a81;
+  --dark: hsla(0,30%,0%,0.35);
   --dark-blue: steelblue;
+  --primary: hsla(0,0%,0%,0.25);
   --med--accent: #ff7f11;
   --light: lightblue;
+  --yellow: #ffdd80;
+  --accent: hsl(268, 30%, 50%);
 }
 .salmon-bg{
   background-color: salmon;

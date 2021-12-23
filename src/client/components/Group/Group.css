@@ -6,10 +6,14 @@
     margin: 0.5rem;
     padding: 0.5rem;
     /* Background & Border */
-    background-color: #048a81;
+    background-color: var(--accent);
     border-radius: 1rem;
     /* Misc */
     list-style-type: none;
+}
+#group button{
+    background-color: var(--yellow);
+    color: var(--accent)
 }
 
 .group-header form input{

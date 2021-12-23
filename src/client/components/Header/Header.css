@@ -6,12 +6,19 @@
     align-items: center;
     /* Spacing */
     padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 1rem;
     /* Background & Border */
-    background-color: var(--dark);
+    background-color: var(--accent);
+}
+#header button{
+    background-color: var(--yellow);
+    color: var(--accent)
 }
 #header h1{
     font-weight: 700;
-    font-size: 1.5;
+    font-size: 1.5rem;
+    color: white;
 }
 #header-user-info{
     display: flex;
@@ -25,7 +32,7 @@
     position: relative;
 }
 .dropdown-item span{
-    background-color: var(--dark);
+    background-color: var(--accent);
     border-radius: 1rem;
     padding: 0.25rem;
 }

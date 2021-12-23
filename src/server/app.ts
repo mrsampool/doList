@@ -8,7 +8,7 @@ const apiRouter = require('./routers');
 
 const app = express();
 app.use(express.static(path.join(__dirname, '..', 'client')));
-//require('./authenticate')();
+require('./auth')();
 //require('dotenv').config();
 
 const store = new MongoDBStore({

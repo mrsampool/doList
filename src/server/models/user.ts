@@ -18,8 +18,15 @@ module.exports = {
     },
     find: function findUserByName(name: String){
         return new Promise((resolve) => {
-            UserModel.findOne({ name }).then((userData: UserInterface) => resolve(userData));
+            UserModel.findOne({ name })
+                .then((userData: UserInterface) => resolve(userData));
         })
     },
+    findById: function findUserById(_id: String){
+        return new Promise((resolve) => {
+            UserModel.findOne({ _id })
+                .then((userData: UserInterface) => resolve(userData));
+        })
+    }
 
 }

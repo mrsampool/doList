@@ -17,7 +17,7 @@ module.exports = {
     },
     findByUser: function findListsByUser(userId: String){
         return new Promise((resolve) => {
-            ListModel.find({ _id: userId }).then((data: Document[]) => resolve(data));
+            ListModel.find({ user: userId }).then((data: Document[]) => resolve(data));
         })
     },
     findByListId: function findListsByUser(_id: String){

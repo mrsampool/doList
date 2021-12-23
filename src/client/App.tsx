@@ -1,19 +1,21 @@
 // Libraries
-import {useEffect, useState} from "react";
+import {useEffect, useState, Fragment} from "react";
 
 // Components
 import GroupList from "./components/GroupList/GroupList";
+
 
 // Utils
 const serverUtils = require('./utils/serverUtils');
 import {List} from "../lib/classes/List";
 import {User} from '../lib/classes/User';
 import {AppContext} from "./utils/AppContext";
+import {Auth} from "./components/Auth/Auth";
 
 const App = () => {
     const [userLists, setUserLists] = useState([]);
     const [currentList, setCurrentList] = useState(new List());
-    const [user, setUser] = useState(new User('sambpool@gmail.com'));
+    const [user, setUser] = useState(new User());
     function handleAddGroup(){
         const groupName = (document.getElementById('input-group-name') as HTMLInputElement).value;
         if (groupName){
@@ -25,15 +27,35 @@ const App = () => {
             )
         }
     }
+    useEffect(() => {
+        if (user && user.email) {
+            serverUtils.fetchLists(user._id, setUserLists, setCurrentList);
+        } else {
+            serverUtils.fetchUser(setUser);
+        }
+    }, [user]);
     useEffect(()=>{
-        serverUtils.fetchLists(user._id, setUserLists, setCurrentList);
     }, [])
     return (
         <AppContext.Provider value={{ user, userLists, currentList, setCurrentList }}>
-            <h1>{currentList.name}</h1>
-            <GroupList list={currentList.groups} />
-            <input id="input-group-name"/>
-            <button onClick={handleAddGroup}>Add Group</button>
+            { user && user._id ? (
+                currentList
+                ? (
+                    <Fragment>
+                        <h1>{currentList.name}</h1>
+                        <GroupList list={currentList.groups} />
+                        <input id="input-group-name"/>
+                        <button onClick={handleAddGroup}>Add Group</button>
+                    </Fragment>
+                ) : <p>Loading your lists...</p>
+            ) : (
+                <Auth
+                    logIn={serverUtils.login}
+                    createAccount={serverUtils.postUser}
+                    setUser={setUser}
+                />
+            )}
+
         </AppContext.Provider>
     )
 

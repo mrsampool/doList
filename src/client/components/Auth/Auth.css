@@ -1,0 +1,50 @@
+#Auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#Auth form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#Auth label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    color: white;
+}
+#Auth input {
+    max-width: 20rem;
+}
+#Auth button {
+    width: fit-content;
+}
+#Auth h2 {
+    font-weight: bold;
+}
+#Auth h2 {
+    color: lightgreen;
+}
+#Auth p {
+    color: white;
+}
+#Auth #create {
+    margin: 0.25rem;
+}
+.login-rows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.login-rows label {
+    margin: 0.25rem;
+}
+#other-options {
+    margin-top: 1rem;
+    background-color: var(--dark);
+    border: 0.25rem solid var(--light);
+    border-radius: 1rem;
+    padding: 1rem;
+}

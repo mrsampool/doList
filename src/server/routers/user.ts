@@ -10,6 +10,7 @@ process.env.NODE_ENV !== 'production' && userRouter.use((req: Request, res: Resp
 });
 
 userRouter.post('/', controller.user.create);
+userRouter.get('/current/', controller.user.getCurrent);
 // TODO: userRouter.get('/:userId');
 userRouter.use('/:user/list', listRouter);
 

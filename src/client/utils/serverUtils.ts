@@ -1,5 +1,7 @@
 import axios from "axios";
 import {ListInterface} from '../../lib/interfaces/ListInterface';
+import {CredsInterface} from '../../lib/interfaces/CredsInterface';
+import {UserInterface} from '../../lib/interfaces/UserInterface';
 
 module.exports = {
     fetchLists: function fetchListsByUser(
@@ -15,11 +17,11 @@ module.exports = {
     },
     postGroup: function postGroupToList(
         groupName: String,
-        username: String,
+        userId: String,
         currentList: ListInterface,
         setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
     ){
-        axios.post(`/api/user/${username}/list/${currentList._id}/group/`,
+        axios.post(`/api/user/${userId}/list/${currentList._id}/group/`,
             {name: groupName})
             .then(({data}) => {
                 const updatedList = Object.create(currentList);
@@ -29,12 +31,12 @@ module.exports = {
     },
     postItem: function postItemToGroup(
         itemName: String,
-        username: String,
+        userId: String,
         listId: String,
         groupId: String,
         setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
     ){
-        axios.post(`/api/user/${username}/list/${listId}/group/${groupId}/item/`,
+        axios.post(`/api/user/${userId}/list/${listId}/group/${groupId}/item/`,
             {name: itemName})
             .then(({data}) => {
                 setCurrentList(data);
@@ -42,18 +44,57 @@ module.exports = {
     },
     setItemStatus: function setItemStatus(
         status: boolean,
-        username: String,
+        userId: String,
         listId: String,
         groupId: String,
         itemId: String,
         setCurrentList: React.Dispatch<React.SetStateAction<ListInterface>>
     ){
-        axios.put(`/api/user/${username}/list/${listId}/group/${groupId}/item/${itemId}`,
+        axios.put(`/api/user/${userId}/list/${listId}/group/${groupId}/item/${itemId}`,
             { status })
             .then(({data}) => {
                 setCurrentList(data);
             })
 
 
-    }
+    },
+    login: function logIn(
+        creds: CredsInterface,
+        setUser: React.Dispatch<React.SetStateAction<UserInterface>>,
+        errorCb?: Function) {
+        axios.post("/api/login", creds)
+            .then(({data}) => {
+                if (data.user) {
+                    setUser(data.user);
+                }
+            })
+            .catch(() => {
+                if (errorCb) {
+                    errorCb()
+                }
+            });
+    },
+    fetchUser(setUser: React.Dispatch<React.SetStateAction<UserInterface>>) {
+        axios
+            .get('/api/user/current')
+            .then(({ data }) => {
+                if (data.user) {
+                    setUser(data.user);
+                }
+            })
+            .catch((err) => console.log(err));
+    },
+    postUser(
+        userInfo: UserInterface,
+        setMode: React.Dispatch<React.SetStateAction<'login' | 'create'>>,
+    ) {
+        axios
+            .post('api/users', userInfo)
+            .then((res) => {
+                if (res && res.status === 200) {
+                    setMode('login');
+                }
+            })
+            .catch((err) => console.log(err));
+    },
 }

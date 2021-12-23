@@ -1,4 +1,4 @@
-#group{
+.group{
     /* Sizing */
     width: 25rem;
     max-width: 100%;
@@ -11,7 +11,7 @@
     /* Misc */
     list-style-type: none;
 }
-#group button{
+.group button{
     background-color: var(--yellow);
     color: var(--accent)
 }
@@ -24,7 +24,7 @@
     margin: 0 0 0.5rem 0;
     background-color: hsla(0,0%,100%,0.25);
 }
-#group ul{
+.group ul{
     margin-left: 0;
     padding: 0;
     list-style-type: none;

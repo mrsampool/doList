@@ -3,6 +3,7 @@ import {useEffect, useState, Fragment} from "react";
 
 // Components
 import GroupList from "./components/GroupList/GroupList";
+import CurrentItems from './components/CurrentItems/CurrentItems';
 
 import './App.css';
 
@@ -14,6 +15,7 @@ import {AppContext} from "./utils/AppContext";
 import {Auth} from "./components/Auth/Auth";
 import Header from "./components/Header/Header";
 import AddGroup from "./components/AddGrop/AddGroup";
+import Group from "./components/Group/Group";
 
 const App = () => {
     const [userLists, setUserLists] = useState([]);
@@ -36,6 +38,7 @@ const App = () => {
                         ? (
                             <Fragment>
                                 <Header logout={serverUtils.logout} setUser={setUser}/>
+                                <CurrentItems groups={currentList.groups}/>
                                 <GroupList list={currentList.groups} />
                                 <AddGroup />
                             </Fragment>

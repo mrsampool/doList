@@ -1,0 +1,34 @@
+#current-items{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+}
+#current-items h2{
+    color: white;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+#current-items .item{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: hsla(0,0%,100%,0.25);
+    border-radius: 1rem;
+    margin-bottom: 0.25rem;
+}
+#current-items .item input[type=checkbox]{
+    width: auto;
+}
+#current-items .item-group, #current-items .item-name{
+    padding: 0.5rem;
+    margin: 0.25rem;
+    border-radius: 1rem;
+}
+#current-items .item-name{
+    background-color: white;
+}
+#current-items .item-group{
+    background-color: var(--yellow);
+}

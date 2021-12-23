@@ -12,7 +12,6 @@ const AddGroup = () => {
         e.preventDefault();
         const nameInput = (document.getElementById('input-group-name') as HTMLInputElement);
         const groupName = nameInput.value;
-        console.log(groupName);
         if (groupName){
             serverUtils.postGroup(
                 groupName,

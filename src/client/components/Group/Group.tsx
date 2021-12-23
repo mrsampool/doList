@@ -30,7 +30,7 @@ const Group = ({ group }:ListGroupProps) => {
         }
     }
     return (
-        <li id="group">
+        <li className="group">
             <input defaultValue={`${name}`} className="group-name"/>
             <ul>
                 { items

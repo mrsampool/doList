@@ -58,8 +58,6 @@ module.exports = {
             .then(({data}) => {
                 setCurrentList(data);
             })
-
-
     },
     login: function logIn(
         creds: CredsInterface,

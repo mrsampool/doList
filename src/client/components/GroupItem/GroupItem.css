@@ -1,7 +1,20 @@
-
+.list-item{
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: hsla(0,0%,100%,0.5);
+    margin: 0.25rem;
+}
 .list-item form{
     display: contents;
 }
-.list-item span button{
-    margin-left: 2rem;
+.list-item input[type=checkbox] {
+    width: fit-content;
+    margin: 0.5rem;
+}
+.list-item .item-name{
+    padding-left: 1rem;
+}
+.list-item label{
+    width: 100%;
 }

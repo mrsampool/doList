@@ -1,11 +1,12 @@
 #group{
     /* Sizing */
-    width: 15rem;
+    width: 100%;
     /* Spacing */
-    margin: 1rem;
-    padding: 1rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
     /* Background & Border */
-    border: 0.25rem solid black;
+    background-color: #048a81;
+    border-radius: 1rem;
     /* Misc */
     list-style-type: none;
 }
@@ -15,9 +16,18 @@
 }
 .group-name{
     width: 100%;
+    margin: 0 0 0.5rem 0;
+    background-color: hsla(0,0%,100%,0.25);
 }
 #group ul{
-    margin-left: 1rem;
+    margin-left: 0;
     padding: 0;
     list-style-type: none;
+}
+#form-new-item{
+    width: 100%;
+    display: flex;
+}
+#form-new-item input{
+    padding-left: 1rem;
 }

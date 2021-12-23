@@ -1,37 +1,42 @@
-import {ReactNode, useState}from "react";
+import {ReactNode, useState, useContext}from "react";
 import {ItemInterface} from "../../../lib/interfaces/ItemInterface";
+
+const {setItemStatus} = require('../../utils/serverUtils');
+import {AppContext} from "../../utils/AppContext";
 
 // Stylesheet
 import './GroupItem.css';
 
-const GroupItem = ({item}:ListGroupItemProps) => {
+const GroupItem = ({item, groupId}:ListGroupItemProps) => {
     const [editMode, setEditMode] = useState(false);
+    const {user, currentList, setCurrentList} = useContext(AppContext);
     function toggleEditMode(){
         setEditMode(!editMode);
     }
-    function handleSubmit(){
+    function handleNameChange(){
         setEditMode(false);
+    }
+    function handleToggleStatus(){
+        setItemStatus(
+            !item.status,
+            user.name,
+            currentList._id,
+            groupId,
+            item._id,
+            setCurrentList
+        )
     }
     return (
         <li className="list-item">
-            <label>
-            <input type="checkbox" defaultChecked={item.status}/>
-                {
-                    !editMode
-                        ? (
-                            <span className="item-name">
-                                {item.name}
-                                <button onClick={toggleEditMode}>edit</button>
-                            </span>
-                        )
-                        : (
-                            <form onSubmit={handleSubmit} onBlur={handleSubmit}>
-                                <input defaultValue={item.name} />
-                                <button type="submit">done</button>
-                            </form>
-                        )
-                }
-            </label>
+            <input
+                id={`check-${item._id}-group${groupId}`}
+                type="checkbox"
+                defaultChecked={item.status}
+                onChange={handleToggleStatus}
+            />
+            <form onSubmit={handleNameChange} onBlur={handleNameChange}>
+                <input className="item-name" defaultValue={item.name} />
+            </form>
         </li>
     )
 }
@@ -39,5 +44,6 @@ export default GroupItem;
 
 interface ListGroupItemProps {
     children: ReactNode,
+    groupId: String,
     item: ItemInterface
 }

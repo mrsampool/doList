@@ -16,7 +16,7 @@ module.exports = {
         const { groupId, itemId } = req.params;
         const { name } = req.body;
         model.item.rename(groupId, itemId, name)
-            .then(() => res.sendStatus(200))
+            .then((editedList:ListInterface) => res.status(200).send(editedList))
             .catch((err: Error) => { console.log(err); res.status(500).send(err)})
     },
     setStatus: function setItemStatus(req: Request, res: Response) {

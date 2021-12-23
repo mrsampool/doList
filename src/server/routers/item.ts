@@ -11,5 +11,6 @@ process.env.NODE_ENV !== 'production'
 
 itemRouter.post('/', controller.item.add);
 itemRouter.put('/:itemId', controller.item.setStatus);
+itemRouter.put('/:itemId/name/', controller.item.rename);
 
 module.exports = itemRouter;
